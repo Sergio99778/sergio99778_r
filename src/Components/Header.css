@@ -35,6 +35,10 @@ footer {
   font-size: 2.6rem;
 }
 
+.typewrite > .wrap {
+  border-right: 0.08em solid #fff;
+}
+
 header .header--submenu {
   margin-top: 15px;
   width: 90%;

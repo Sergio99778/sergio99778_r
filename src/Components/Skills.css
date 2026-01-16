@@ -1,8 +1,6 @@
 .main--skills-section {
   text-align: center;
-  width: 100%;
   min-width: 320px;
-  padding: 15px;
 }
 .main--skills-section .skills-section h3 {
   font-size: 2rem;

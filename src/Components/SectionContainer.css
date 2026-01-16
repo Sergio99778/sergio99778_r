@@ -1,0 +1,13 @@
+.section-container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+  padding: 20px;
+}
+
+@media (min-width: 650px) {
+  .section-container {
+    width: 90%;
+  }
+}
