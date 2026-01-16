@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
-    base: '/sergio99778_r/', // Based on the repo name and deployment context
+    base: process.env.VITE_BASE_PATH || '/', // Use root path for Vercel, can override for GitHub Pages
     server: {
         port: 3000,
     }
