@@ -93,9 +93,8 @@ const Header: React.FC<HeaderProps> = ({ titles, data }) => {
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <a
-          href="/sergio99778_r/cv.pdf"
+          href="https://docs.google.com/document/d/e/2PACX-1vTL3TTd7N7wixEUJ_VXF87ktXf9A3erMXYzl2wYwjz3FZMtZa7iz2siZ0kvsQ6HeA21tTMelv4EStv8/pub"
           className="header--hover-underline-animation"
-          download="Sergio_De_Lucio_CV.pdf"
           target="_blank"
           rel="noreferrer"
         >
