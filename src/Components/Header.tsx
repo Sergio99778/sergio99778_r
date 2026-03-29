@@ -90,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ titles, data }) => {
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <a
-          href="https://docs.google.com/document/d/e/2PACX-1vTL3TTd7N7wixEUJ_VXF87ktXf9A3erMXYzl2wYwjz3FZMtZa7iz2siZ0kvsQ6HeA21tTMelv4EStv8/export?format=pdf"
+          href="https://drive.google.com/file/d/1107DfG0CiDCDL4uuUTs6dgmDctWDOje1/view?usp=sharing"
           className="header--hover-underline-animation"
           target="_blank"
           rel="noreferrer"
