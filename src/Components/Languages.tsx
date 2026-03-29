@@ -2,28 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import "./Languages.css";
+import { staggerContainer, slideInLeft } from "../animations/variants";
 
 interface LanguagesProps {
   languages: string[];
 }
 
 const Languages: React.FC<LanguagesProps> = ({ languages }) => {
-  const res = /\+/g;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0 },
-  };
+  const res = /\+/;
 
   return (
     <section className="main--language-section">
@@ -37,13 +23,13 @@ const Languages: React.FC<LanguagesProps> = ({ languages }) => {
         </motion.h3>
         <motion.ul 
           className="languages-list"
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {languages.map((language, index) => (
-            <motion.li key={index} variants={itemVariants}>
+          {languages.map((language) => (
+            <motion.li key={language} variants={slideInLeft}>
               <p>{language}</p>
               <span
                 className={

@@ -1,15 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import "./Timeline.css";
-
-interface TimelineEvent {
-  id: number;
-  date: string;
-  title: string;
-  company: string;
-  description: string;
-  tags: string[];
-}
+import type { TimelineEvent } from "../types";
 
 const events: TimelineEvent[] = [
   {

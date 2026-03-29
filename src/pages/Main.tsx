@@ -1,11 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import Projects, { ProjectItem } from "../Components/Projects";
+import SectionContainer from "../Components/SectionContainer";
+import Projects from "../Components/Projects";
 import Timeline from "../Components/Timeline";
 import Languages from "../Components/Languages";
 import Tools from "../Components/Tools";
 import Skills from "../Components/Skills";
+
+import { staggerContainer, fadeInItem } from "../animations/variants";
+import type { ProjectItem } from "../types";
 
 import clandestino from "../img/projects/clandestino.jpg";
 import landing from "../img/projects/landing-page.jpg";
@@ -39,32 +43,15 @@ const data: ProjectItem[] = [
   },
 ];
 
-import SectionContainer from "../Components/SectionContainer";
-
 const Main: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
   return (
     <motion.div
       initial="hidden"
       animate="visible"
-      variants={containerVariants}
+      variants={staggerContainer}
     >
       <SectionContainer>
-        <motion.section className="main--introduction-section" variants={itemVariants}>
+        <motion.section className="main--introduction-section" variants={fadeInItem}>
           <div className="introduction-container">
             <h3>Welcome to my website ❤️</h3>
             <ul className="introduction-list">
@@ -83,19 +70,19 @@ const Main: React.FC = () => {
       </SectionContainer>
       
       <SectionContainer>
-        <motion.div variants={itemVariants}>
+        <motion.div variants={fadeInItem}>
           <Projects data={data} />
         </motion.div>
       </SectionContainer>
 
       <SectionContainer>
-        <motion.div variants={itemVariants}>
+        <motion.div variants={fadeInItem}>
           <Timeline />
         </motion.div>
       </SectionContainer>
 
       <SectionContainer>
-        <motion.div className="media" variants={itemVariants}>
+        <motion.div className="media" variants={fadeInItem}>
           <Languages languages={["Python", "C++", "C", "Web", "Java", "PHP"]} />
           <Tools
             tools={[
@@ -117,7 +104,7 @@ const Main: React.FC = () => {
       </SectionContainer>
       
       <SectionContainer>
-        <motion.div variants={itemVariants}>
+        <motion.div variants={fadeInItem}>
           <Skills />
         </motion.div>
       </SectionContainer>

@@ -3,34 +3,14 @@ import { motion } from 'framer-motion';
 
 import './Projects.css';
 import defaultImage from '../img/404.svg';
-
-export interface ProjectItem {
-  name: string;
-  url: string;
-  img?: string;
-  desc: string;
-}
+import { staggerContainer, fadeInItem } from '../animations/variants';
+import type { ProjectItem } from '../types';
 
 interface ProjectsProps {
   data: ProjectItem[];
 }
 
 const Projects: React.FC<ProjectsProps> = ({ data }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  };
-
   return (
     <section className="projects" id="projects">
       <motion.h3 
@@ -43,16 +23,16 @@ const Projects: React.FC<ProjectsProps> = ({ data }) => {
       </motion.h3>
       <motion.div 
         className="main--projects-section"
-        variants={containerVariants}
+        variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {data.map((item, i) => (
-          <motion.div key={i} className="project" variants={itemVariants}>
+        {data.map((item) => (
+          <motion.div key={item.name} className="project" variants={fadeInItem}>
             <h3 className="project-title">⭐ {item.name} ⭐</h3>
             <a href={item.url} rel="noreferrer" target="_blank">
-              <img className="project--image" src={item.img ? item.img : defaultImage} alt={item.desc} />
+              <img className="project--image" src={item.img ? item.img : defaultImage} alt={item.desc} loading="lazy" />
             </a>
           </motion.div>
         ))}

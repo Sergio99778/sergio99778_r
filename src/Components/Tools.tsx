@@ -2,27 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 
 import "./Tools.css";
+import { staggerContainer, slideInRight } from "../animations/variants";
 
 interface ToolsProps {
   tools: string[];
 }
 
 const Tools: React.FC<ToolsProps> = ({ tools }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0 },
-  };
-
   return (
     <section className="main--tools-section">
       <div className="tools-section">
@@ -35,13 +21,13 @@ const Tools: React.FC<ToolsProps> = ({ tools }) => {
         </motion.h3>
         <motion.ul 
           className="tools-list"
-          variants={containerVariants}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {tools.map((tool, index) => (
-            <motion.li key={index} variants={itemVariants}>
+          {tools.map((tool) => (
+            <motion.li key={tool} variants={slideInRight}>
               <p>{tool}</p>
               <span className={`logo ${tool.toLowerCase()}-logo`}></span>
             </motion.li>

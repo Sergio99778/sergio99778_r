@@ -3,15 +3,11 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import "./Header.css";
-
-interface Title {
-  name: string;
-  to: string;
-}
+import type { Title } from "../types";
 
 interface HeaderProps {
   titles: Title[];
-  data: string;
+  data: string[];
 }
 
 interface TypewriterState {
@@ -23,7 +19,7 @@ interface TypewriterState {
 const Header: React.FC<HeaderProps> = ({ titles, data }) => {
   const [text, setText] = useState<string>("");
   
-  const toRotate = useRef<string[]>(JSON.parse(data));
+  const toRotate = useRef<string[]>(data);
   const period = 2000;
   
   // Ref to track engine state across re-renders without triggering them
@@ -37,11 +33,11 @@ const Header: React.FC<HeaderProps> = ({ titles, data }) => {
     let ticker: ReturnType<typeof setTimeout>;
 
     const tick = () => {
-      let { isDeleting, loopNum, text: currentText } = state.current;
-      let i = loopNum % toRotate.current.length;
-      let fullTxt = toRotate.current[i];
+      const { isDeleting, loopNum, text: currentText } = state.current;
+      const i = loopNum % toRotate.current.length;
+      const fullTxt = toRotate.current[i];
       
-      let updatedText = isDeleting
+      const updatedText = isDeleting
         ? fullTxt.substring(0, currentText.length - 1)
         : fullTxt.substring(0, currentText.length + 1);
 
@@ -88,21 +84,22 @@ const Header: React.FC<HeaderProps> = ({ titles, data }) => {
       <motion.nav 
         className="header--submenu" 
         id="navbar"
+        aria-label="Main navigation"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.8 }}
       >
         <a
-          href="https://docs.google.com/document/d/e/2PACX-1vTL3TTd7N7wixEUJ_VXF87ktXf9A3erMXYzl2wYwjz3FZMtZa7iz2siZ0kvsQ6HeA21tTMelv4EStv8/pub"
+          href="https://docs.google.com/document/d/e/2PACX-1vTL3TTd7N7wixEUJ_VXF87ktXf9A3erMXYzl2wYwjz3FZMtZa7iz2siZ0kvsQ6HeA21tTMelv4EStv8/export?format=pdf"
           className="header--hover-underline-animation"
           target="_blank"
           rel="noreferrer"
         >
           CV
         </a>
-        {titles.map((title, i) => (
+        {titles.map((title) => (
           <Link
-            key={i}
+            key={title.to}
             className="header--hover-underline-animation"
             to={title.to}
           >

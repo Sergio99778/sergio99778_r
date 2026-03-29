@@ -4,31 +4,37 @@
   width: 100%;
   min-width: 320px;
 }
-.fa {
-  padding: 20px;
-  font-size: 30px;
-  width: 70px;
-  text-align: center;
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  font-size: 26px;
+  width: 60px;
+  height: 60px;
   text-decoration: none;
   margin: 5px 2px;
+  color: white;
   transition: opacity 0.3s ease;
 }
-.fa:hover {
+
+.social-link:hover {
   opacity: 0.7;
 }
-.fa-facebook {
+
+.social-link--facebook {
   background: #3b5998;
-  color: white;
 }
-.fa-twitter {
-  background: #55acee;
-  color: white;
+
+.social-link--twitter {
+  background: #1da1f2;
 }
-.fa-linkedin {
+
+.social-link--linkedin {
   background: #007bb5;
-  color: white;
 }
-.fa-github {
+
+.social-link--github {
   background-color: #757575;
-  color: white;
 }

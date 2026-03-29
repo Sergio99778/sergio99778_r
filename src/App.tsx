@@ -1,26 +1,19 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 //Dependencies
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 //Components
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-
-//Pages
-import Main from "./pages/Main";
-import AboutMe from "./pages/AboutMe";
+import ErrorBoundary from "./Components/ErrorBoundary";
+import SkipToContent from "./Components/SkipToContent";
 
 import "./App.css";
+import type { Title, SocialLink } from "./types";
 
-interface Title {
-  name: string;
-  to: string;
-}
-
-interface SocialLink {
-  name: string;
-  href: string;
-}
+//Pages (lazy-loaded for code splitting)
+const Main = lazy(() => import("./pages/Main"));
+const AboutMe = lazy(() => import("./pages/AboutMe"));
 
 const titles: Title[] = [
   { name: "About me", to: "/about_me" },
@@ -49,16 +42,19 @@ const App: React.FC = () => {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="App">
+        <SkipToContent />
         <Header
           titles={titles}
-          data='[ "Creating software.", "Creating the future.", "I Love to code.", "I Love to Develop." ]'
+          data={["Creating software.", "Creating the future.", "I Love to code.", "I Love to Develop."]}
         />
-        <main>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about_me" element={<AboutMe />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+        <main id="main-content">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<ErrorBoundary><Main /></ErrorBoundary>} />
+              <Route path="/about_me" element={<ErrorBoundary><AboutMe /></ErrorBoundary>} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer redes={redes} />
       </div>
