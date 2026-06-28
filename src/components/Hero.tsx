@@ -57,7 +57,7 @@ const TERM_SCRIPT: Array<{ type: 'cmd' | 'out'; text: string }> = [
   { type: 'cmd', text: 'sudo make coffee' },
   { type: 'out', text: '<span class="warn">[warn]</span> coffee.machine: out of beans\n<span class="ok">[ok]</span>   tea.kettle: ready' },
   { type: 'cmd', text: 'echo "say hi →"' },
-  { type: 'out', text: 'sergio99778@gmail.com' },
+  { type: 'out', text: 'sergio4brandon@gmail.com' },
 ];
 
 function HeroTerminal() {
@@ -143,7 +143,21 @@ function HeroTerminal() {
   );
 }
 
+function useIsMobile(maxWidth = 900) {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(`(max-width:${maxWidth}px)`).matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width:${maxWidth}px)`);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, [maxWidth]);
+  return isMobile;
+}
+
 function Hero() {
+  const isMobile = useIsMobile();
   return (
     <section id="top" className="hero">
       <div className="container">
@@ -171,7 +185,7 @@ function Hero() {
               <div className="stat"><div className="v">∞</div><div className="k">Refactors</div></div>
             </div>
           </div>
-          <div><HeroTerminal/></div>
+          {!isMobile && <div><HeroTerminal/></div>}
         </div>
       </div>
     </section>

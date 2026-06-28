@@ -14,14 +14,14 @@ function Contact() {
               that needs solid APIs or production AI, drop me a line.
             </p>
             <div className="cta-row">
-              <a className="btn btn--solid" href="mailto:sergio99778@gmail.com">▶ SEND MESSAGE</a>
+              <a className="btn btn--solid" href="mailto:sergio4brandon@gmail.com">▶ SEND MESSAGE</a>
               <a id="cv" className="btn" href="https://drive.google.com/file/d/1dS1x-oBpoXO49YJOBuwmzQRvslf2_Ie3/view?usp=sharing" target="_blank" rel="noreferrer">↓ DOWNLOAD CV.PDF</a>
             </div>
           </div>
           <div className="links">
-            <a href="mailto:sergio99778@gmail.com">
+            <a href="mailto:sergio4brandon@gmail.com">
               <span className="ico">@</span>
-              <span className="lab">sergio99778@gmail.com</span>
+              <span className="lab">sergio4brandon@gmail.com</span>
               <span className="arr">→</span>
             </a>
             <a href="https://github.com/Sergio99778" target="_blank" rel="noreferrer">
