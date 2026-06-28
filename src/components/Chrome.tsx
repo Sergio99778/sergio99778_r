@@ -16,9 +16,18 @@ function PixelCursor() {
   const ref = useRef<HTMLDivElement>(null);
   const [click, setClick] = useState(false);
   useEffect(() => {
+    let rafId: number | null = null;
+    let px = 0;
+    let py = 0;
     const move = (e: MouseEvent) => {
-      if (!ref.current) return;
-      ref.current.style.transform = `translate(${e.clientX - 2}px, ${e.clientY - 2}px)`;
+      px = e.clientX - 2;
+      py = e.clientY - 2;
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          if (ref.current) ref.current.style.transform = `translate3d(${px}px, ${py}px, 0)`;
+          rafId = null;
+        });
+      }
     };
     const down = () => setClick(true);
     const up = () => setClick(false);
@@ -29,6 +38,7 @@ function PixelCursor() {
       window.removeEventListener('mousemove', move);
       window.removeEventListener('mousedown', down);
       window.removeEventListener('mouseup', up);
+      if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, []);
   return (

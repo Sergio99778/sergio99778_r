@@ -163,7 +163,7 @@ function Hero() {
             <div className="cta-row">
               <a className="btn btn--solid" href="#projects">▶ PLAY PROJECTS</a>
               <a className="btn" href="#contact">PRESS START · HIRE ME</a>
-              <a className="btn btn--ghost" href="https://drive.google.com/file/d/1107DfG0CiDCDL4uuUTs6dgmDctWDOje1/view?usp=sharing" target="_blank" rel="noreferrer">↓ CV.PDF</a>
+              <a className="btn btn--ghost" href="https://drive.google.com/file/d/1dS1x-oBpoXO49YJOBuwmzQRvslf2_Ie3/view?usp=sharing" target="_blank" rel="noreferrer">↓ CV.PDF</a>
             </div>
             <div className="stats">
               <div className="stat"><div className="v">5+ YRS</div><div className="k">Shipping</div></div>

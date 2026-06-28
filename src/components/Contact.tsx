@@ -15,7 +15,7 @@ function Contact() {
             </p>
             <div className="cta-row">
               <a className="btn btn--solid" href="mailto:sergio99778@gmail.com">▶ SEND MESSAGE</a>
-              <a id="cv" className="btn" href="https://drive.google.com/file/d/1107DfG0CiDCDL4uuUTs6dgmDctWDOje1/view?usp=sharing" target="_blank" rel="noreferrer">↓ DOWNLOAD CV.PDF</a>
+              <a id="cv" className="btn" href="https://drive.google.com/file/d/1dS1x-oBpoXO49YJOBuwmzQRvslf2_Ie3/view?usp=sharing" target="_blank" rel="noreferrer">↓ DOWNLOAD CV.PDF</a>
             </div>
           </div>
           <div className="links">
