@@ -98,6 +98,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Cursor ---------- */
+/* Keep the custom pixel cursor on every interactive element. The UA stylesheet
+   forces `pointer` on links/buttons, overriding the inherited `cursor: none`
+   from <body>. Re-assert `none` so .pix-cursor shows everywhere. Component
+   cursors (e.g. the tweaks panel move/resize) use class selectors and still
+   win on specificity. */
+a, button, input, select, textarea, label, summary,
+[role="button"], [role="link"], [tabindex] {
+  cursor: none;
+}
+
 .pix-cursor {
   position: fixed; top: 0; left: 0; width: 24px; height: 24px;
   pointer-events: none; z-index: 10000;
